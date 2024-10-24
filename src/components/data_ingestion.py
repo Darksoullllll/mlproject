@@ -9,6 +9,9 @@ from dataclasses import dataclass
 from src.components.data_transformation import DataTransformation
 from src.components.data_transformation import DataTransformationconfig
 
+from src.components.model_trainer import ModelTrainer
+from src.components.model_trainer import ModelTrainerConfig
+
 @dataclass  # this decorator allows us to define variables without an __init__ function
 class DataIngestionConfig:
     train_data_path: str = os.path.join('artifacts', "train.csv")
@@ -56,4 +59,8 @@ if __name__ == "__main__":
     
     # Data Transformation
     data_transformation_obj = DataTransformation()
-    data_transformation_obj.initiate_data_tranformation(train_data,test_data)
+    train_arr,test_arr,_ =data_transformation_obj.initiate_data_tranformation(train_data,test_data)
+    
+    # Training the model
+    model_training_obj = ModelTrainer()
+    model_training_obj.initiate_model_trainer(train_arr,test_arr)
