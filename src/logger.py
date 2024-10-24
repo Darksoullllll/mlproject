@@ -19,5 +19,3 @@ logging.basicConfig(
     level=logging.INFO,
 )
 
-
-logging.info("Logging setup complete.")
